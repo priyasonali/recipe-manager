@@ -1,0 +1,5 @@
+*.DS_Store
+vendor/composer/
+vendor/priyasonali/
+vendor/autoload.php
+composer.lock
