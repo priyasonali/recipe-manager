@@ -1,0 +1,15 @@
+{
+    "name": "priyasonali/recipemanager",
+    "type": "api",
+    "description": "PHP api for recipe manager system.",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/priyasonali/importer"
+        }
+    ],
+    "require": {
+        "priyasonali/importer": "dev-master"
+    }
+
+}
