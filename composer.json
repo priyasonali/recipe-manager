@@ -1,5 +1,5 @@
 {
-    "name": "priyasonali/recipemanager",
+    "name": "recipemanager/recipemanager",
     "type": "api",
     "description": "PHP api for recipe manager system.",
     "repositories": [
@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "priyasonali/importer": "dev-master"
+        "importer/importer": "dev-master"
     }
 
 }
