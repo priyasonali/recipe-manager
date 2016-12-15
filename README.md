@@ -27,6 +27,5 @@ A CRUD application for recipes built using Angular leveraging a PHP based RESTfu
 
 ### Contributors
 
-- [Sean (@cod3rguy)](http://cod3rguy.tech)
-- [Sonali (@priyasonali)](http://sonalipriya.com)
-
+- [Sean (@cod3rguy)](https://github.com/cod3rguy)
+- [Sonali (@priyasonali)](https://github.com/priyasonali)
