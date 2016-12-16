@@ -1,25 +1,25 @@
 
 <?php
     header("Content-type: application/json");
-    require './includes/class.database.php';
-    require './includes/class.errorlist.php';
-    $response = array();
+    require $include_path."class.database.php";
+    require $include_path.'class.errorlist.php';
     
 
     class Users{
 
-        public function __construct($uemail, $uname, $upass) {
+        public function __construct($credentials) {
         
-            $this->user_email = $uemail;
-            $this->user_name = $uname;
-            $this->user_pass = $upass;
+            $this->user_email = $credentials['user_email'];
+            $this->user_name = $credentials['user_name'];
+            $this->user_pass = $credentials['user_pass'];
+           
 
         }
 
         public function pushdata(){  
             $db = new Database;
             $mysqli = $db->connect();
-            $errnum = new ErrorList;
+            $errnum = new ErrorList();
             
             if($this->user_email != null && $this->user_name != null && $this->user_pass != null){
                 $result = $mysqli->query("SELECT * FROM users WHERE user_email='$this->user_email'")->num_rows;
@@ -51,7 +51,7 @@
         
     }
 
-    $check = new Users($_REQUEST["user_email"],$_REQUEST["user_name"],$_REQUEST["user_pass"]);
+    $check = new Users($_REQUEST);
     echo $check->pushdata();
     
 ?>

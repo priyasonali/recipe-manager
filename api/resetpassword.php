@@ -1,7 +1,8 @@
 <?php
+    header("Content-type: application/json");
     require '../vendors/class.jwt.php';
-    require './includes/class.database.php';
-    require './includes/class.errorlist.php';
+    require $include_path.'class.database.php';
+    require $include_path.'class.errorlist.php';
 
     $authHeader = apache_request_headers()["authorization"];
     $token = JWT::decode($authHeader, enchanted);
