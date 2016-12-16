@@ -1,7 +1,7 @@
 <?php
     header("content-type: application/json");
-    require './includes/class.database.php';
-    require './includes/class.errorlist.php';
+    require $include_path.'class.database.php';
+    require $include_path.'class.errorlist.php';
     require '../vendor/class.jwt.php';
     $response = array();
     class Signin{

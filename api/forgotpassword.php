@@ -1,6 +1,7 @@
 <?php
-    require './includes/class.database.php';
-    require './includes/class.errorlist.php';
+    header("Content-type: application/json");
+    require $include_path.'class.database.php';
+    require $include_path.'class.errorlist.php';
 
 
     class ForgotPass{
