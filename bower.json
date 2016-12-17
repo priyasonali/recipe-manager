@@ -1,0 +1,29 @@
+{
+  "name": "recipe-manager",
+  "homepage": "https://github.com/cod3rguy/recipe-manager",
+  "authors": [
+    "Sean <coderguy.com>",
+    "Sonali <sonalipriya.com>"
+  ],
+  "description": "A CRUD app to manage recipes",
+  "main": "index.html",
+  "keywords": [
+    "php",
+    "angular",
+    "typescript",
+    "bootstrap",
+    "less"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

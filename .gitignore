@@ -3,3 +3,4 @@ api/vendors/composer/
 api/vendors/importer/
 api/vendors/autoload.php
 api/composer.lock
+components/
