@@ -2,6 +2,9 @@
     "name": "recipemanager/recipemanager",
     "type": "api",
     "description": "PHP api for recipe manager system.",
+    "config": {
+        "vendor-dir": "vendors"
+    },
     "repositories": [
         {
             "type": "vcs",

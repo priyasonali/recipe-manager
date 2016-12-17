@@ -1,6 +1,6 @@
 <?php
     header("Content-type: application/json");
-    require '../vendors/class.jwt.php';
+    require $include_path_vendors.'vendors/class.jwt.php';
     require $include_path.'class.database.php';
     require $include_path.'class.errorlist.php';
 
