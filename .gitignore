@@ -1,5 +1,5 @@
 *.DS_Store
-vendor/composer/
-vendor/importer/
-vendor/autoload.php
-composer.lock
+api/vendors/composer/
+api/vendors/importer/
+api/vendors/autoload.php
+api/composer.lock
