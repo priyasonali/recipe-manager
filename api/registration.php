@@ -1,9 +1,8 @@
-
 <?php
     header("Content-type: application/json");
     require $include_path."class.database.php";
-    require $include_path.'class.errorlist.php';
-    
+    require $include_path."class.errorlist.php";
+ 
 
     class Users{
 
@@ -12,8 +11,6 @@
             $this->user_email = $credentials['user_email'];
             $this->user_name = $credentials['user_name'];
             $this->user_pass = $credentials['user_pass'];
-           
-
         }
 
         public function pushdata(){  
@@ -26,7 +23,8 @@
                 if($result>0)
                 { 
                     $response["error"]["err_code"] = 0;  
-                    $response["error"]["err_desc"] = $errnum->errlist[0];                
+                    $response["error"]["err_desc"] = $errnum->errlist[0];   
+                           
                 } 
                 else if(($mysqli->query("SELECT * FROM users WHERE user_name='$this->user_name'")->num_rows)>0){
                     $response["error"]["err_code"] = 1;  
@@ -38,7 +36,9 @@
                     {
                         $response["status"] = "Success"; 
                     } else { 
-                        $response["status"] = "Failed"; 
+                        $response["status"] = "Failed";
+                        $response["error"]["err_code"] = 5;
+                        $response["error"]["err_desc"] = $errnum->errlist[5];  
                     }
                 }
             } else {
