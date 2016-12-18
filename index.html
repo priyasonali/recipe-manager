@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="RecipeManager">
     <head>
         <meta charset='utf-8'>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -9,15 +9,21 @@
         <link rel="stylesheet" href="./stylesheets/css/style.css">
     </head>
     <body>
-        <header>
-            <h1>Recipe Manager</h1>
+        <header class="topHead">
+            <img src="./assets/img/logo.png" alt="logo">
+            <h1>recipe manager</h1>
         </header>
-        <main>
-
+        <main class="container">
+            <div ng-view></div>
         </main>
         <footer>
 
         </footer>
         <!-- Scripts -->
+        <script src="./components/jquery/dist/jquery.min.js"></script>
+        <script src="./components/angular/angular.min.js"></script>
+        <script src="./components/angular-route/angular-route.min.js"></script>
+        <script src="./scripts/app.js"></script>
+        <script src="./scripts/routes.js"></script>
     </body>
 </html>

@@ -1,8 +1,50 @@
-// Less Imports
+// Less Dependency Imports
 @import '../../components/bootstrap/less/bootstrap.less';
 @import './partials/variables.less';
 @import './partials/mixins.less';
 
-// CSS Imports
+// CSS Dependency Imports
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 @import url('https://fonts.googleapis.com/css?family=Dosis');
+
+// Common Styling
+body {
+    color: @color1;
+    background: @color2;
+}
+
+.topHead {
+    text-align: center;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    background: linear-gradient(180deg, #fff, #ddd);
+    box-shadow: 0 0 3px 1px @color1;
+    img {
+        height: 60px;
+    }
+    h1 {
+        #font2;
+        margin: -15px 0 0 0;
+    }
+}
+
+.btn-primary {
+    background: lighten(@color1,10%);
+    border: 1px solid @color1;
+    color: lighten(@color3,15%);
+    &:hover {
+        background: darken(@color1,10%);
+        border: 1px solid darken(@color1,15%);
+        color: @color3;
+    }
+}
+
+.form-control {
+    &:focus {
+        border: 1px solid @color3;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @color3;
+    }
+}
+
+// Less Page Style Imports
+@import './partials/login.less';
