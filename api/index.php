@@ -1,4 +1,5 @@
 <?php
+    header("content-type: application/json");
     $config = json_decode(file_get_contents("../config.json"),true);
     $include_path = realpath($_SERVER["DOCUMENT_ROOT"]).$config["root"]."/api/includes/";
     $include_path_vendors = realpath($_SERVER["DOCUMENT_ROOT"]).$config["root"]."/api/";

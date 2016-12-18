@@ -38,6 +38,8 @@
                 }
                 else{
                     $response["status"] = "Failed";
+                    $response["error"]["err_code"] = 3;
+                    $response["error"]["err_desc"] = $errnum->errlist[3]; 
                 }
 
             } else {
