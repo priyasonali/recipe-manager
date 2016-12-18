@@ -1,1 +1,6 @@
-angular.module("RecipeManager",['ngRoute']);
+angular.module("RecipeManager",
+    [
+        'ngRoute',
+        'ngResource'
+    ]
+);
