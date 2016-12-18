@@ -1,5 +1,4 @@
-<?php
-  
+<?php 
   class ErrorList {
       public function __construct(){
           
