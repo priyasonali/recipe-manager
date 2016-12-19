@@ -2,6 +2,8 @@
 
 [Initial Steps](./initialsteps.html)
 
+[Installer](./install.html)
+
 [Using API](./using-api.html)
 
 - [Registration](./registration.html)
