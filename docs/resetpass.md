@@ -54,7 +54,7 @@ __Case 2__ - Query fail:
     "status": "failure",
     "error": {
     "err_code": 5,
-    "err_desc": "Internal server error."
+    "err_desc": "Query failed."
         }
     }
 ```
