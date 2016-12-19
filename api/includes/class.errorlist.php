@@ -8,7 +8,7 @@
           $this->errlist[2] = "Please enter the details.";
           $this->errlist[3] = "Invalid login details.";
           $this->errlist[4] = "Invalid email address.";
-          $this->errlist[5] = "Internal server error.";
+          $this->errlist[5] = "Query failed.";
           $this->errlist[6] = "Invalid password.";
       }
 }

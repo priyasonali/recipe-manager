@@ -13,4 +13,6 @@ Steps:
 * Enter the database name, username and password. Submit it.
 * Your database is created now.
 
->This api will accepts data in both `application/x-www-form-urlencoded` and `application/json`. Be sure set the appropriate `content-type` header accordingly.
+
+>This api will accepts data in both `application/x-www-form-urlencoded` and `application/json`.
+>Be sure set the appropriate `content-type` header accordingly.
