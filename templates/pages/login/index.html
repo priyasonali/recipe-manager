@@ -1,19 +1,32 @@
 <div class='row loginFormRow' ng-controller="LoginController as loginCtrl">
     <div class='col-md-6 col-md-offset-3'>
-        <form class="text-center" name="loginForm" novalidate>
+        <form class="text-center" name="loginForm" novalidate ng-submit="(loginForm.$valid && loginCtrl.login(loginCtrl.credentials))">
             <div class="form-group">
-                <input type="email" class="form-control input-lg" placeholder="Email" name="uEmail" ng-model="loginCtrl.user_name" ng-required="true">
+                <input type="text" class="form-control input-lg" placeholder="Username" name="uName" 
+                ng-model="loginCtrl.credentials.user_name" ng-required="true" ng-minlength="4" ng-maxlength="12" ng-pattern="loginCtrl.uNameRegX">
+                <div class="alert alert-warning"  ng-show="loginCtrl.errorChk('uName')">
+                    <div ng-show="loginCtrl.errorChk('uName','required')">Username is required.</div>
+                    <div ng-show="loginCtrl.errorChk('uName','minlength')">Username should be minimum 4 characters in length.</div>
+                    <div ng-show="loginCtrl.errorChk('uName','maxlength')">Username should be maximum 12 characters in length.</div>
+                    <div ng-show="loginCtrl.errorChk('uName','pattern')">Username should be lowercase alphabets only.</div>
+                </div>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Password" name="uPass" ng-model="loginCtrl.user_pass" ng-required="true">
+                <input type="password" class="form-control input-lg" placeholder="Password" name="uPass"
+                ng-model="loginCtrl.credentials.user_pass" ng-required="true" ng-minlength="8" ng-pattern="loginCtrl.uPassRegX"/>
+                <div class="alert alert-warning"  ng-show="loginCtrl.errorChk('uPass')">
+                    <div ng-show="loginCtrl.errorChk('uPass','required')">Password is required.</div>
+                    <div ng-show="loginCtrl.errorChk('uPass','minlength')">Password should be minimum 8 characters in length.</div>
+                    <div ng-show="loginCtrl.errorChk('uPass','pattern')">Password should contain at least an uppercase, a lowercase, a digit and a special character [!=@#$%^&*_.-]</div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg" ng-click="loginCtrl.login()">Login to Account</button>
+            <button type="submit" class="btn btn-primary btn-lg">Login to Account</button>
         </form>
         <hr>
-        <div class="alert alert-danger"  ng-show="loginCtrl.response.status == 'Failed'">
+        <div class="alert alert-danger"  ng-show="loginCtrl.response.status == 'failure'">
             Error {{loginCtrl.response.error.err_code}}: {{loginCtrl.response.error.err_desc}}
         </div>
-        <div class="alert alert-success"  ng-show="loginCtrl.response.status == 'Logged in'">
+        <div class="alert alert-success"  ng-show="loginCtrl.response.status == 'success'">
             Authentication Successful!
         </div>
     </div>
