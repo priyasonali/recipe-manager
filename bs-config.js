@@ -12,7 +12,15 @@
  |
  */
 module.exports = {
-	files: ['*.html','./stylesheets/css/*.css'],
+	files: [
+				'*.html',
+				'./stylesheets/css/*.css',
+				'./scripts/*.js',
+				'./scripts/controllers/*.js',
+				'./scripts/directives/*.js',
+				'./scripts/filters/*js',
+				'./scripts/services/*.js'
+	],
 	proxy: 'localhost',
 	port: 1337,
 	open: false
