@@ -23,7 +23,7 @@ POST /api/?action=registration
 
 ```js
     {
-    "status": "Success"
+    "status": "success"
     }
 ```
 
@@ -34,6 +34,7 @@ __Case 1__ - Email exists:
 
 ```js
     {
+    "status": "failure",
      "error": {
      "err_code": 0,
      "err_desc": "This email is already registered."
@@ -45,6 +46,7 @@ __Case 2__ - Username exists:
 
 ```js
     {
+    "status": "failure",
     "error": {
     "err_code": 1,
     "err_desc": "This username is taken."
@@ -56,6 +58,7 @@ __Case 3__ - Blank fields:
 
 ```js
     {
+    "status": "failure",
     "error": {
     "err_code": 2,
     "err_desc": "Please enter the details."
@@ -67,7 +70,7 @@ __Case 4__ - Query fail:
 
 ```js
     {
-    "status": "Failed",
+    "status": "failure",
     "error": {
     "err_code": 5,
     "err_desc": "Internal server error."

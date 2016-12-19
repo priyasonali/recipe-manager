@@ -22,11 +22,13 @@
                 $result = $mysqli->query("SELECT * FROM users WHERE user_email='$this->user_email'")->num_rows;
                 if($result>0)
                 { 
+                    $response["status"] = "failure";
                     $response["error"]["err_code"] = 0;  
                     $response["error"]["err_desc"] = $errnum->errlist[0];   
                            
                 } 
                 else if(($mysqli->query("SELECT * FROM users WHERE user_name='$this->user_name'")->num_rows)>0){
+                    $response["status"] = "failure";
                     $response["error"]["err_code"] = 1;  
                     $response["error"]["err_desc"] = $errnum->errlist[1];    
                 }
@@ -34,14 +36,15 @@
                 {
                     if($result = $mysqli->query("INSERT INTO users (user_email, user_name, user_pass, user_status) VALUES ('$this->user_email', '$this->user_name', '$this->user_pass', 'Pending')"))
                     {
-                        $response["status"] = "Success"; 
+                        $response["status"] = "success"; 
                     } else { 
-                        $response["status"] = "Failed";
+                        $response["status"] = "failure";
                         $response["error"]["err_code"] = 5;
                         $response["error"]["err_desc"] = $errnum->errlist[5];  
                     }
                 }
             } else {
+                $response["status"] = "failure";
                 $response["error"]["err_code"] = 2;
                 $response["error"]["err_desc"] = $errnum->errlist[2]; 
             }
@@ -51,7 +54,7 @@
         
     }
 
-    $check = new Users($_REQUEST);
+    $check = new Users($request);
     echo $check->pushdata();
     
 ?>

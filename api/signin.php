@@ -29,20 +29,21 @@
                 $pass = $row['user_pass'];
 
                 if($user == $user_name && $pass == $this->user_pass && $result->num_rows > 0){
-                    $response["status"] = "Logged in";
+                    $response["status"] = "success";
                     $uid["user_id"] = $row['user_id'];
-                    $response ["authentication_token"]=  JWT::encode($uid, enchanted);
+                    $response ["token"]=  JWT::encode($uid, enchanted);
 
-                   header('authorization:'.JWT::encode($uid, enchanted));
+                  // header('authorization:'.JWT::encode($uid, enchanted));
 
                 }
                 else{
-                    $response["status"] = "Failed";
+                    $response["status"] = "failure";
                     $response["error"]["err_code"] = 3;
                     $response["error"]["err_desc"] = $errnum->errlist[3]; 
                 }
 
             } else {
+                $response["status"] = "failure";
                 $response["error"]["err_code"] = 2;
                 $response["error"]["err_desc"] = $errnum->errlist[2]; 
             }
