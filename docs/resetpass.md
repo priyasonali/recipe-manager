@@ -28,7 +28,7 @@ authorization : token
 
 ```js
     {
-        "status": "Success"
+        "status": "success"
     }
 ```
 
@@ -39,6 +39,7 @@ __Case 1__ - Invalid details:
 
 ```js
     {
+    "status": "failure",
     "error": {
         "err_code": 3,
         "err_desc": "Invalid login details."
@@ -50,7 +51,7 @@ __Case 2__ - Query fail:
 
 ```js
     {
-    "status": "Failed",
+    "status": "failure",
     "error": {
     "err_code": 5,
     "err_desc": "Internal server error."
@@ -62,7 +63,7 @@ __Case 3__ - Invalid Password:
 
 ```js
     {
-    "status": "Failed",
+    "status": "failure",
     "error": {
     "err_code": 6,
     "err_desc": "Invalid password."

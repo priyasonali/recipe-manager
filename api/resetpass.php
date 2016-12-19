@@ -10,10 +10,10 @@
 
     class ResetPass{
 
-        public function __construct($userPass, $userNewPass, $uid) {
+        public function __construct($pass, $uid) {
         
-            $this->userPass = $userPass;
-            $this->userNewPass = $userNewPass;
+            $this->userPass = $pass["user_pass"];
+            $this->userNewPass = $pass["user_new_pass"];
             $this->uid = $uid;
 
         }
@@ -61,7 +61,7 @@
 
 
     }
-    $check = new ResetPass($_REQUEST["user_pass"],$_REQUEST["user_new_pass"], $uid);
+    $check = new ResetPass($request, $uid);
     echo $check->reset();
 
 ?>

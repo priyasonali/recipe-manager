@@ -22,8 +22,8 @@ POST /api/?action=signin
 
 ```js
     {
-    "status": "Logged in",
-    "authentication_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMiJ9.138NdeGE3jsdOWZiU5DSHDXoXejkJq2qL5NEUn37Eu8"
+    "status": "success",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMiJ9.138NdeGE3jsdOWZiU5DSHDXoXejkJq2qL5NEUn37Eu8"
     }
 ```
 
@@ -36,7 +36,7 @@ __Case 1__ - Invalid details:
 
 ```js
     {
-    "status": "Failed",
+    "status": "failure",
     "error": {
         "err_code": 3,
         "err_desc": "Invalid login details."
@@ -48,6 +48,7 @@ __Case 2__ - Blank fields:
 
 ```js
     {
+    "status": "failure",
     "error": {
     "err_code": 2,
     "err_desc": "Please enter the details."

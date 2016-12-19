@@ -5,3 +5,4 @@ api/vendors/autoload.php
 api/composer.lock
 components/
 api/includes/class.database.php
+api/rest-test.rest
