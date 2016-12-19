@@ -52,8 +52,8 @@
         }
         
     }
-
-    $signin = new Signin($_REQUEST["user_name"],$_REQUEST["user_pass"]);
+    
+    $signin = new Signin($request['user_name'],$request['user_pass']);
     echo $signin->pulldata();
     
 ?>

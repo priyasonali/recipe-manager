@@ -5,7 +5,7 @@
 	protected $db_name = '';
 	protected $db_user = '';
 	protected $db_pass = '';
-	protected $db_host = 'localhost';
+	protected $db_host = ''; //possible value - "localhost"
 	
 	public function connect() {
 	

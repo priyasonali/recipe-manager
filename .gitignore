@@ -4,3 +4,4 @@ api/vendors/importer/
 api/vendors/autoload.php
 api/composer.lock
 components/
+api/includes/class.database.php
