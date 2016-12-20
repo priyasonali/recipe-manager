@@ -5,7 +5,7 @@ angular.module('RecipeManager')
             var ctrl = this;
 
             ctrl.uNameRegX = /^[a-z]+$/;
-            ctrl.uPassRegX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!=@#$%^&*_.-])[A-Za-z\d!=@#$%^&*_.-]+$/;
+            ctrl.uPassRegX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!=@#$%^&-])[A-Za-z\d!=@#$%^&-]+$/;
             ctrl.errorChk = function(element, error){
                 var form = $scope.loginForm;
                 var formElement = $scope.loginForm[element];
