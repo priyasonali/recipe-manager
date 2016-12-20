@@ -1,3 +1,5 @@
+#### [Back to Index](./index.html)
+
 # API requests and responses
 
 ## Sign in
@@ -13,8 +15,8 @@ POST /api/?action=signin
 
 | Field | Desc | Possible Values |
 |:---:|:---:|:---:|
-| user_name | Self Explanatory | Registered valid user name string |
-| user_pass | Self Explanatory | A valid password |
+| user_name | Self Explanatory | Registered valid user name string (lowercase, length: 3 - 12) |
+| user_pass | Self Explanatory | A valid password (minimum 1 lowercase, 1 uppercase, 1 digit and 1 special character from the list [!,=,@,#,$,%,^,&,*,_,.,-,] *brackets and comma not included*) |
 
 ### Response
 
