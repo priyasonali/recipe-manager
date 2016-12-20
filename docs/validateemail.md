@@ -32,7 +32,7 @@ __Case 1__ - For user:
     }
 ```
 
-__Case 2__ - For developer:
+__Case 2__ - user_check is true:
 
 ```js
     {
@@ -60,7 +60,19 @@ __Case 1__ - Already activated:
     }
 ```
 
-__Case 2__ - Invalid code:
+__Case 2__ - Already registered:
+
+```js
+    {
+    "status": "failure",
+    "error": {
+        "err_code": 0,
+        "err_desc": "This email is already registered."
+         }
+    }
+```
+
+__Case 3__ - Invalid code:
 
 ```js
     {
@@ -72,7 +84,7 @@ __Case 2__ - Invalid code:
     }
 ```
 
-__Case 3__ - Valid email & invalid code:
+__Case 4__ - Valid email & invalid code:
 
 > Email is send to the user with the link containing code.
 
@@ -86,7 +98,7 @@ __Case 3__ - Valid email & invalid code:
     }
 ```
 
-__Case 4__ - Blank code & activated email:
+__Case 5__ - Blank code & activated email:
 
 
 ```js
@@ -99,7 +111,7 @@ __Case 4__ - Blank code & activated email:
     }
 ```
 
-__Case 5__ - Blank code & email exists:
+__Case 6__ - Blank code & email exists:
 
 > Email is send to the user with the link containing updated code.
 
@@ -113,7 +125,7 @@ __Case 5__ - Blank code & email exists:
     }
 ```
 
-__Case 6__ - Blank code & email does not exists:
+__Case 7__ - Blank code & email does not exists:
 
 > Email is send to the user with the link containing code.
 
@@ -127,7 +139,7 @@ __Case 6__ - Blank code & email does not exists:
     }
 ```
 
-__Case 7__ - Blank code & email:
+__Case 8__ - Blank code & email:
 
 
 ```js
