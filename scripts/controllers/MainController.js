@@ -3,6 +3,11 @@ angular.module('RecipeManager')
         '$scope', '$location',
         function($scope, $location) {
             var ctrl = this;
-            ctrl.location = $location.path();
+
+            ctrl.chkLocation = function() {
+                return Array.prototype.slice.call(arguments).some(function(path){
+                    return path === $location.path();
+                });
+            };
         }
     ]);

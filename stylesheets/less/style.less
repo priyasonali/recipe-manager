@@ -36,11 +36,37 @@ h1, h2, h3, p {
     }
 }
 
+.topHeadWide {
+    text-align: center;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    background: linear-gradient(180deg, #fff, #ddd);
+    box-shadow: 0 0 3px 1px @color1;
+    img {
+        height: 60px;
+    }
+    h1 {
+        #font2;
+        margin: -15px 0 0 0;
+    }
+    @media screen and (max-width: 768px) {
+        padding: 10px 0;
+        img {
+            height: 30px;
+        }
+        h1 {
+            #font2;
+            font-size: 1.5em;
+            margin: -5px 0 0 0;
+        }
+    }
+}
+
 .btn-primary {
     background: lighten(@color1,10%);
     border: 1px solid @color1;
     color: lighten(@color3,15%);
-    &:hover {
+    &:hover, &:focus {
         background: darken(@color1,10%);
         border: 1px solid darken(@color1,15%);
         color: @color3;
