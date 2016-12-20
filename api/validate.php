@@ -11,12 +11,13 @@
         
             $this->user_email = $details['user_email'];
             $this->user_code = $details['user_code'];
+            $this->user_check = $details['user_check'];
+            $this->random= mt_rand(100000,999999);
 
         }
         
-        public function emailSend(){
-            $this->random= mt_rand(100000,999999);
-            $to = $this->user_email;
+        public function emailSend($random){
+           $to = $this->user_email;
             $subject = "Email validation for recipe-manager account";
             $txt = "
                     <html>
@@ -32,7 +33,7 @@
                     </html>
                     ";
             $headers = "From: noreply@recipemanager.com" . "\r\n" .
-            mail($to,$subject,$txt,$headers);
+            mail($to,$subject,$txt,$headers); 
         }
 
         public function compare(){  
@@ -56,7 +57,8 @@
                     }
                    else if($code==$this->user_code){
                        $mysqli->query("UPDATE tmp_users SET tmp_code='1' WHERE tmp_email='$this->user_email'");
-                       $response["status"] = "success";
+                       $response["status"] = "Success";
+                       $response["msg"] = "Your email is activated.";
                     }else{
                     $response["status"] = "failure";
                     $response["error"]["err_code"] = 9;
@@ -72,7 +74,7 @@
                         $response["error"]["err_code"] = 8;
                         $response["error"]["err_desc"] = $errnum->errlist[8]; 
                     }else{
-                        $this->emailSend();
+                        $this->emailSend($this->random);
                         $result = $mysqli->query("INSERT INTO tmp_users (tmp_email, tmp_code) VALUES ('$this->user_email', '$this->random')");
                         $response["status"] = "failure";
                         $response["error"]["err_code"] = 7;
@@ -93,14 +95,22 @@
                  $result2 = $mysqli->query("SELECT * FROM tmp_users WHERE tmp_email='$this->user_email'");
                     $row2 = $result2->fetch_assoc();
                     $found_email = $row2['tmp_email'];
+                    $random1 = $row2['tmp_code'];
                     if($result2->num_rows>0){
-                        $this->emailSend();
-                       $mysqli->query("UPDATE tmp_users SET tmp_code='$this->random' WHERE tmp_email='$this->user_email'");
-                       $response["status"] = "failure";
-                       $response["error"]["err_code"] = 7;
-                       $response["error"]["err_desc"] = $errnum->errlist[7];
+                        if($this->user_check == true){
+                            $response["status"] = "failure";
+                            $response["error"]["err_code"] = 7;
+                            $response["error"]["err_desc"] = $errnum->errlist[7];
+
+                        }
+                        else{
+                            $response["status"] = "failure";
+                            $response["error"]["err_code"] = 7;
+                            $response["error"]["err_desc"] = $errnum->errlist[7];
+                            $this->emailSend($random1);
+                        }
                     } else{
-                        $this->emailSend();
+                        $this->emailSend($this->random);
                         $result = $mysqli->query("INSERT INTO tmp_users (tmp_email, tmp_code) VALUES ('$this->user_email', '$this->random')");
                         $response["status"] = "failure";
                         $response["error"]["err_code"] = 7;
