@@ -13,18 +13,26 @@ body {
     background: @color2;
 }
 
+h1, h2, h3, p {
+    color: @color1;
+}
+
 .topHead {
-    text-align: center;
-    padding: 15px 0;
-    margin-bottom: 30px;
-    background: linear-gradient(180deg, #fff, #ddd);
-    box-shadow: 0 0 3px 1px @color1;
-    img {
-        height: 60px;
+    .row {
+        padding: 5px 10px;
+        margin-bottom: 30px;
+        background: linear-gradient(180deg, #fff, #ddd);
+        box-shadow: 0 0 3px 1px @color1;
+        h1 {
+            #font2;
+            margin: 0;
+            img {
+                height: 60px;
+            }
+        }
     }
-    h1 {
-        #font2;
-        margin: -15px 0 0 0;
+    @media screen and (max-width: 768px) {
+        text-align: center;
     }
 }
 
