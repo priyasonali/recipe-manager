@@ -9,7 +9,7 @@ angular.module('RecipeManager')
             ctrl.errorChk = function(element, error){
                 var form = $scope.loginForm;
                 var formElement = $scope.loginForm[element];
-                if(arguments.length === 1) {
+                if(Array.prototype.slice.call(arguments).length === 1) {
                     return (formElement.$touched || form.$submitted) && formElement.$invalid;
                 } else {
                     return (formElement.$touched || form.$submitted) && formElement.$error[error];

@@ -1,1 +1,53 @@
-register
+<div class='row registerFormRow' ng-controller="RegistrationController as registerCtrl">
+    <div class='col-md-6 col-md-offset-3'>
+        <form class="text-center" name="registerForm" novalidate ng-submit="(registerForm.$valid && registerCtrl.register(registerCtrl.credentials))">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="email" class="form-control input-lg" placeholder="Email" name="uEmail" 
+                    ng-model="registerCtrl.credentials.user_email" ng-required="true" >
+                    <span class="input-group-btn">
+                        <button class="btn btn-lg" ng-class="{'btn-warning':registerCtrl.actStatus != 'activated','btn-success':registerCtrl.actStatus == 'activated'}" type="button" title="{{registerCtrl.actDesc}}" ng-click="registerCtrl.activate()" ng-disabled="registerCtrl.actStatus != ''">
+                            <i class="fa" ng-class="{'fa-key':registerCtrl.actStatus == '','fa-spinner fa-spin':registerCtrl.actStatus == 'pending','fa-check':registerCtrl.actStatus == 'activated'}"></i>
+                        </button>
+                    </span>
+                </div>
+                <div class="alert alert-info" ng-show="registerCtrl.actStatus == 'pending'">
+                    Email with an activation link has been sent to the above address. 
+                    Leave this page open and once your email is activated, you can continue with registration. 
+                    Didn't receive email? <a href ng-click="registerCtrl.resend()">Click here to resend it</a>.
+                </div>
+                <div class="alert alert-warning"  ng-show="registerCtrl.errorChk('uEmail')">
+                    <div ng-show="registerCtrl.errorChk('uEmail','required')">Email address is required.</div>
+                    <div ng-show="registerCtrl.errorChk('uEmail','email')">Please enter a valid email address.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control input-lg" placeholder="Username" name="uName" 
+                ng-model="registerCtrl.credentials.user_name" ng-required="true" ng-minlength="4" ng-maxlength="12" ng-pattern="registerCtrl.uNameRegX">
+                <div class="alert alert-warning"  ng-show="registerCtrl.errorChk('uName')">
+                    <div ng-show="registerCtrl.errorChk('uName','required')">Username is required.</div>
+                    <div ng-show="registerCtrl.errorChk('uName','minlength')">Username should be minimum 4 characters in length.</div>
+                    <div ng-show="registerCtrl.errorChk('uName','maxlength')">Username should be maximum 12 characters in length.</div>
+                    <div ng-show="registerCtrl.errorChk('uName','pattern')">Username should be lowercase alphabets only.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control input-lg" placeholder="Password" name="uPass"
+                ng-model="registerCtrl.credentials.user_pass" ng-required="true" ng-minlength="8" ng-pattern="registerCtrl.uPassRegX"/>
+                <div class="alert alert-warning"  ng-show="registerCtrl.errorChk('uPass')">
+                    <div ng-show="registerCtrl.errorChk('uPass','required')">Password is required.</div>
+                    <div ng-show="registerCtrl.errorChk('uPass','minlength')">Password should be minimum 8 characters in length.</div>
+                    <div ng-show="registerCtrl.errorChk('uPass','pattern')">Password should contain at least an uppercase, a lowercase, a digit and a special character [!=@#$%^&-]</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Login to Account</button>
+        </form>
+        <hr>
+        <div class="alert alert-danger"  ng-show="registerCtrl.response.status == 'failure'">
+            Error {{registerCtrl.response.error.err_code}}: {{registerCtrl.response.error.err_desc}}
+        </div>
+        <div class="alert alert-success"  ng-show="registerCtrl.response.status == 'success'">
+            Authentication Successful!
+        </div>
+    </div>
+</div>
