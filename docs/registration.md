@@ -1,3 +1,5 @@
+#### [Back to Index](./index.html)
+
 # API requests and responses
 
 ## Registration
