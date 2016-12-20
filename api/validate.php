@@ -73,7 +73,7 @@
                         $response["error"]["err_desc"] = $errnum->errlist[8]; 
                     }else{
                         $this->emailSend();
-                        $result = $mysqli->query("INSERT INTO tmp_users (tmp_email, tmp_code) VALUES ('$this->user_email', 'hj')");
+                        $result = $mysqli->query("INSERT INTO tmp_users (tmp_email, tmp_code) VALUES ('$this->user_email', '$this->random')");
                         $response["status"] = "failure";
                         $response["error"]["err_code"] = 7;
                         $response["error"]["err_desc"] = $errnum->errlist[7]; 
