@@ -10,6 +10,9 @@
           $this->errlist[4] = "Invalid email address.";
           $this->errlist[5] = "Query failed.";
           $this->errlist[6] = "Invalid password.";
+          $this->errlist[7] = "Email not activated.";
+          $this->errlist[8] = "Email already activated.";
+          $this->errlist[9] = "Invalid url.";
       }
 }
 ?>

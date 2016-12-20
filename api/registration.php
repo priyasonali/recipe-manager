@@ -19,6 +19,7 @@
             $errnum = new ErrorList();
             
             if($this->user_email != null && $this->user_name != null && $this->user_pass != null){
+                
                 $result = $mysqli->query("SELECT * FROM users WHERE user_email='$this->user_email'")->num_rows;
                 if($result>0)
                 { 
@@ -34,13 +35,35 @@
                 }
                 else           
                 {
-                    if($result = $mysqli->query("INSERT INTO users (user_email, user_name, user_pass, user_status) VALUES ('$this->user_email', '$this->user_name', '$this->user_pass', 'Pending')"))
-                    {
-                        $response["status"] = "success"; 
-                    } else { 
+                    $datacheck = 0;
+                        $result=$mysqli->query("SELECT * FROM tmp_users WHERE tmp_email='$this->user_email'");
+                        $row = $result->fetch_assoc();
+                        $tmp_email = $row['tmp_email'];
+                        $tmp_code = $row['tmp_code'];
+                    if(($result->num_rows)>0){
+                        if($tmp_code == 1){
+                            $mysqli->query("DELETE FROM tmp_users WHERE tmp_email='$this->user_email'");
+                            $datacheck=1;
+                        } else {
                         $response["status"] = "failure";
-                        $response["error"]["err_code"] = 5;
-                        $response["error"]["err_desc"] = $errnum->errlist[5];  
+                        $response["error"]["err_code"] = 7;  
+                        $response["error"]["err_desc"] = $errnum->errlist[7]; 
+                        }
+                    }
+                    else{
+                        $response["status"] = "failure";
+                        $response["error"]["err_code"] = 7;  
+                        $response["error"]["err_desc"] = $errnum->errlist[7];  
+                    }
+                    if($datacheck==1){
+                        if($result = $mysqli->query("INSERT INTO users (user_email, user_name, user_pass) VALUES ('$this->user_email', '$this->user_name', '$this->user_pass')"))
+                        {
+                            $response["status"] = "success"; 
+                        } else { 
+                            $response["status"] = "failure";
+                            $response["error"]["err_code"] = 5;
+                            $response["error"]["err_desc"] = $errnum->errlist[5];  
+                        }
                     }
                 }
             } else {
