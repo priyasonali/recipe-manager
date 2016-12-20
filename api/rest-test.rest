@@ -1,0 +1,39 @@
+### Registration
+
+POST http://localhost/recipe-manager/api/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+action=registration&user_email=nambnb2@tecccst.com&user_name=se1nxxn99cnccan&user_pass=someDecentPassword
+
+### GET Format
+
+GET http://localhost/recipe-manager/api/registration.php?user_email=shan@test.com&user_name=sean&user_pass=someDecentPass
+
+### Sign in
+
+POST http://localhost/recipe-manager/api/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+action=signin&user_name=se1nxxn99cnccan&user_pass=someDecentPassword
+
+### Reset Password
+
+POST http://localhost/recipe-manager/api/ HTTP/1.1
+content-type: application/x-www-form-urlencoded
+authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMSJ9.9iyolC3c7wRS0f8jJQsU9-zS1RoFZttpf9FVbseL1C8
+
+action=resetpass&user_pass=someDecentPassword&user_new_pass=klddm
+
+###
+
+POST http://localhost/recipe-manager/api/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+action=forgotpass&user_email=nambnb2@tecccst.com&user_pass=qwer
+
+###
+
+POST http://localhost/recipe-manager/api/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+action=validate&user_email=nambnb2@tecccst.com&user_code=
