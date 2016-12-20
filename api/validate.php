@@ -98,17 +98,16 @@
                     $found_code = $row2['tmp_code'];
                     $random1 = $row2['tmp_code'];
                     if($result2->num_rows>0){
-                        if($this->user_check == true){
-                            $response["status"] = "failure";
-                            $response["error"]["err_code"] = 7;
-                            $response["error"]["err_desc"] = $errnum->errlist[7];
-
-                        } else if($found_code==1){
+                        if($found_code==1){
                             $response["status"] = "failure";
                             $response["error"]["err_code"] = 8;
                             $response["error"]["err_desc"] = $errnum->errlist[8];
                         }
-                        else{
+                        else if($this->user_check == true){
+                            $response["status"] = "failure";
+                            $response["error"]["err_code"] = 7;
+                            $response["error"]["err_desc"] = $errnum->errlist[7];
+                        }else{
                             $response["status"] = "failure";
                             $response["error"]["err_code"] = 7;
                             $response["error"]["err_desc"] = $errnum->errlist[7];
