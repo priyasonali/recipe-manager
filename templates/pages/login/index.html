@@ -17,7 +17,7 @@
                 <div class="alert alert-warning"  ng-show="loginCtrl.errorChk('uPass')">
                     <div ng-show="loginCtrl.errorChk('uPass','required')">Password is required.</div>
                     <div ng-show="loginCtrl.errorChk('uPass','minlength')">Password should be minimum 8 characters in length.</div>
-                    <div ng-show="loginCtrl.errorChk('uPass','pattern')">Password should contain at least an uppercase, a lowercase, a digit and a special character [!=@#$%^&*_.-]</div>
+                    <div ng-show="loginCtrl.errorChk('uPass','pattern')">Password should contain at least an uppercase, a lowercase, a digit and a special character [!=@#$%^&-]</div>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary btn-lg">Login to Account</button>

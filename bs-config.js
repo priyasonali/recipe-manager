@@ -14,6 +14,10 @@
 module.exports = {
 	files: [
 				'*.html',
+				'./templates/pages/home/*.html',
+				'./templates/pages/login/*.html',
+				'./templates/pages/register/*.html',
+				'./templates/pages/dashboard/*.html',
 				'./stylesheets/css/*.css',
 				'./scripts/*.js',
 				'./scripts/controllers/*.js',

@@ -8,10 +8,20 @@
         <!-- Stylesheets -->
         <link rel="stylesheet" href="./stylesheets/css/style.css">
     </head>
-    <body>
-        <header class="topHead">
-            <img src="./assets/img/logo.png" alt="logo">
-            <h1>recipe manager</h1>
+    <body ng-controller="MainController as mainCtrl">
+        <header class="topHead" ng-hide="mainCtrl.chkLocation('/','/login')">
+            <div class='row'>
+                <div class='col-md-4'>
+                    <h1><img src="./assets/img/logo.png" alt="logo"> recipe manager</h1>
+                </div>
+                <div class='col-md-4'>
+                    <nav></nav>
+                </div>
+            </div>
+        </header>
+        <header class="topHeadWide" ng-show="mainCtrl.chkLocation('/','/login')">
+             <img src="./assets/img/logo.png" alt="logo">
+             <h1>recipe manager</h1>
         </header>
         <main class="container">
             <div ng-view></div>
@@ -27,6 +37,8 @@
         <script src="./scripts/app.js"></script>
         <script src="./scripts/routes.js"></script>
         <script src="./scripts/services/api.js"></script>
+        <script src="./scripts/controllers/MainController.js"></script>
+        <script src="./scripts/controllers/HomeController.js"></script>
         <script src="./scripts/controllers/LoginController.js"></script>
     </body>
 </html>

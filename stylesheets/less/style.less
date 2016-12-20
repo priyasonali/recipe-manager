@@ -13,7 +13,30 @@ body {
     background: @color2;
 }
 
+h1, h2, h3, p {
+    color: @color1;
+}
+
 .topHead {
+    .row {
+        padding: 5px 10px;
+        margin-bottom: 30px;
+        background: linear-gradient(180deg, #fff, #ddd);
+        box-shadow: 0 0 3px 1px @color1;
+        h1 {
+            #font2;
+            margin: 0;
+            img {
+                height: 60px;
+            }
+        }
+    }
+    @media screen and (max-width: 768px) {
+        text-align: center;
+    }
+}
+
+.topHeadWide {
     text-align: center;
     padding: 15px 0;
     margin-bottom: 30px;
@@ -26,13 +49,24 @@ body {
         #font2;
         margin: -15px 0 0 0;
     }
+    @media screen and (max-width: 768px) {
+        padding: 10px 0;
+        img {
+            height: 30px;
+        }
+        h1 {
+            #font2;
+            font-size: 1.5em;
+            margin: -5px 0 0 0;
+        }
+    }
 }
 
 .btn-primary {
     background: lighten(@color1,10%);
     border: 1px solid @color1;
     color: lighten(@color3,15%);
-    &:hover {
+    &:hover, &:focus {
         background: darken(@color1,10%);
         border: 1px solid darken(@color1,15%);
         color: @color3;
