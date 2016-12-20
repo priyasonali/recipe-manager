@@ -71,8 +71,8 @@
 
                     if($reg_email == $this->user_email){
                         $response["status"] = "failure";
-                        $response["error"]["err_code"] = 8;
-                        $response["error"]["err_desc"] = $errnum->errlist[8]; 
+                        $response["error"]["err_code"] = 0;
+                        $response["error"]["err_desc"] = $errnum->errlist[0]; 
                     }else{
                         $this->emailSend($this->random);
                         $result = $mysqli->query("INSERT INTO tmp_users (tmp_email, tmp_code) VALUES ('$this->user_email', '$this->random')");
@@ -89,12 +89,13 @@
 
                 if($reg_email == $this->user_email){
                     $response["status"] = "failure";
-                    $response["error"]["err_code"] = 8;
-                    $response["error"]["err_desc"] = $errnum->errlist[8]; 
+                    $response["error"]["err_code"] = 0;
+                    $response["error"]["err_desc"] = $errnum->errlist[0]; 
                 }else {
                  $result2 = $mysqli->query("SELECT * FROM tmp_users WHERE tmp_email='$this->user_email'");
                     $row2 = $result2->fetch_assoc();
                     $found_email = $row2['tmp_email'];
+                    $found_code = $row2['tmp_code'];
                     $random1 = $row2['tmp_code'];
                     if($result2->num_rows>0){
                         if($this->user_check == true){
@@ -102,6 +103,10 @@
                             $response["error"]["err_code"] = 7;
                             $response["error"]["err_desc"] = $errnum->errlist[7];
 
+                        } else if($found_code==1){
+                            $response["status"] = "failure";
+                            $response["error"]["err_code"] = 8;
+                            $response["error"]["err_desc"] = $errnum->errlist[8];
                         }
                         else{
                             $response["status"] = "failure";
