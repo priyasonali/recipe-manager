@@ -1,7 +1,7 @@
 angular.module('RecipeManager')
     .controller('RegistrationController', [
-        '$scope', '$interval', 'api', '$log',
-        function($scope, $interval, api, $log) {
+        '$scope', '$location', '$timeout', '$interval', 'api', '$log',
+        function($scope, $location, $timeout, $interval, api, $log) {
             var ctrl = this;
 
             ctrl.actStatus = "";
@@ -13,6 +13,7 @@ angular.module('RecipeManager')
                 var form = $scope.registerForm;
                 var formElement = $scope.registerForm[element];
                 if(Array.prototype.slice.call(arguments).length === 1) {
+                    if(element == "uPass1" && (formElement.$touched || form.$submitted) && ctrl.user_pass != ctrl.credentials.user_pass) return true;
                     return (formElement.$touched || form.$submitted) && formElement.$invalid;
                 } else {
                     return (formElement.$touched || form.$submitted) && formElement.$error[error];
@@ -84,6 +85,11 @@ angular.module('RecipeManager')
                 credentials.action = 'registration';
                 api().fetch(credentials).$promise.then(function(response){
                     ctrl.response = response;
+                    if(response.status == "success") {
+                        $timeout(function(){
+                            $location.path('/login');
+                        },2000);
+                    }
                 },
                 function(response){
                     ctrl.response = {
