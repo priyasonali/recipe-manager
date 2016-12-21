@@ -24,7 +24,6 @@ angular.module('RecipeManager')
                     ctrl.actStatus = "pending";
                     ctrl.actDesc = "Waiting for activation...";
                     ctrl.sendEmail();
-                    ctrl.waitActivation();
                 } else {
                     $scope.registerForm.uEmail.$touched = true;
                 }
@@ -40,10 +39,21 @@ angular.module('RecipeManager')
                     model.user_check = true;
                 }
                 api().fetch(model).$promise.then(function(response){
-                    $log.log(response.status);
-                    if(response.status == "success") {
+                    $log.log(response.error.err_code);
+                    if(response.error.err_code == 8) {
                         if(ctrl.check) {
                             $interval.cancel(ctrl.waitInterval);
+                        }
+                        ctrl.actStatus = "activated";
+                        ctrl.actDesc = "Activated!";
+                        $log.log("Activated!");
+                    } else if(response.error.err_code === 0) {
+                        ctrl.actStatus = "";
+                        ctrl.actDesc = "Activate Email";
+                        ctrl.response = response;
+                    } else {
+                        if(!ctrl.check) {
+                            ctrl.waitActivation();
                         }
                     }
                 },
@@ -67,15 +77,13 @@ angular.module('RecipeManager')
                 ctrl.waitInterval = $interval(function(){
                     $log.log("checking...");
                     ctrl.sendEmail(true);
-                },10000);
+                },5000);
             };
 
             ctrl.register = function(credentials) {
-                credentials.action = 'signin';
+                credentials.action = 'registration';
                 api().fetch(credentials).$promise.then(function(response){
-                ctrl.response = response;
-                if(response.token) sessionStorage.setItem("authToken", response.token);
-                else if(sessionStorage.getItem("authToken")) sessionStorage.removeItem("authToken");
+                    ctrl.response = response;
                 },
                 function(response){
                     ctrl.response = {
