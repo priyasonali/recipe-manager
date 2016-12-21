@@ -40,6 +40,16 @@
                     <div ng-show="registerCtrl.errorChk('uPass','pattern')">Password should contain at least an uppercase, a lowercase, a digit and a special character [!=@#$%^&-]</div>
                 </div>
             </div>
+            <div class="form-group">
+                <input type="password" class="form-control input-lg" placeholder="Confirm Password" name="uPass1"
+                ng-model="registerCtrl.user_pass" ng-required="true" ng-minlength="8" ng-pattern="registerCtrl.uPassRegX" ng-disabled="registerCtrl.actStatus != 'activated'"/>
+                <div class="alert alert-warning"  ng-show="registerCtrl.errorChk('uPass1')">
+                    <div ng-show="registerCtrl.errorChk('uPass1','required')">Password is required.</div>
+                    <div ng-show="registerCtrl.errorChk('uPass1','minlength')">Password should be minimum 8 characters in length.</div>
+                    <div ng-show="registerCtrl.errorChk('uPass1','pattern')">Password should contain at least an uppercase, a lowercase, a digit and a special character [!=@#$%^&-]</div>
+                    <div ng-show="registerForm.uPass1.$valid && (registerCtrl.user_pass != registerCtrl.credentials.user_pass)">The provided passwords are not matching.</div>
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary btn-lg" ng-disabled="registerCtrl.actStatus != 'activated'">Register Account</button>
         </form>
         <hr>
