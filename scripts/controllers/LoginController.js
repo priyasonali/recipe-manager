@@ -1,7 +1,7 @@
 angular.module('RecipeManager')
     .controller('LoginController', [
-        '$scope', 'api',
-        function($scope, api) {
+        '$scope', '$timeout', '$location', 'api',
+        function($scope, $timeout, $location, api) {
             var ctrl = this;
 
             ctrl.uNameRegX = /^[a-z]+$/;
@@ -19,9 +19,14 @@ angular.module('RecipeManager')
             ctrl.login = function(credentials) {
                 credentials.action = 'signin';
                 api().fetch(credentials).$promise.then(function(response){
-                ctrl.response = response;
-                if(response.token) sessionStorage.setItem("authToken", response.token);
-                else if(sessionStorage.getItem("authToken")) sessionStorage.removeItem("authToken");
+                    ctrl.response = response;
+                    if(response.token) {
+                        sessionStorage.setItem("authToken", response.token);
+                        $timeout(function(){
+                            $location.path('/dashboard');
+                        },2000);
+                    }
+                    else if(sessionStorage.getItem("authToken")) sessionStorage.removeItem("authToken");
                 },
                 function(response){
                     ctrl.response = {

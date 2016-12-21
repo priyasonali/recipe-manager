@@ -1,7 +1,7 @@
 angular.module('RecipeManager')
     .controller('RegistrationController', [
-        '$scope', '$interval', 'api', '$log',
-        function($scope, $interval, api, $log) {
+        '$scope', '$location', '$timeout', '$interval', 'api', '$log',
+        function($scope, $location, $timeout, $interval, api, $log) {
             var ctrl = this;
 
             ctrl.actStatus = "";
@@ -84,6 +84,11 @@ angular.module('RecipeManager')
                 credentials.action = 'registration';
                 api().fetch(credentials).$promise.then(function(response){
                     ctrl.response = response;
+                    if(response.status == "success") {
+                        $timeout(function(){
+                            $location.path('/login');
+                        },2000);
+                    }
                 },
                 function(response){
                     ctrl.response = {
