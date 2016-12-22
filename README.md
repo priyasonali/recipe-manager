@@ -2,6 +2,8 @@
 
 A CRUD application for recipes built using Angular leveraging a PHP based RESTful API.
 
+API Docs: https://priyasonali.github.io/recipe-manager/
+
 ### User Stories
 
 - I can sign up using my email address to gain valid credentials.

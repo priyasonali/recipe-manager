@@ -9,5 +9,10 @@ angular.module('RecipeManager')
                     return path === $location.path();
                 });
             };
+
+            ctrl.setLocation = function(loc) {
+                $location.path(loc);
+            };
+
         }
     ]);
