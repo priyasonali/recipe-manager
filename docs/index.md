@@ -8,3 +8,4 @@
     - [Forgot Password](./forgotpass.html)
     - [Reset Password](./resetpass.html)
     - [Validate Email](./validateemail.html)
+    - [Ingredients](./ingredients.html)
