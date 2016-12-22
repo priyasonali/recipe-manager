@@ -14,8 +14,41 @@
                 <div class='col-md-4'>
                     <h1><img src="./assets/img/logo.png" alt="logo"> recipe manager</h1>
                 </div>
-                <div class='col-md-4'>
-                    <nav></nav>
+                <div class='col-md-8'>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a ng-class="{active:mainCtrl.chkLocation('/dashboard')}" href ng-click="mainCtrl.setLocation('/dashboard')">
+                                    <span><i class="fa fa-lg fa-home"></i></span>
+                                    <span class="hidden-xs">Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a ng-class="{active:mainCtrl.chkLocation('/recipes')}" href ng-click="mainCtrl.setLocation('/recipes')">
+                                    <span><i class="fa fa-lg fa-book"></i></span>
+                                    <span class="hidden-xs">Recipes</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a ng-class="{active:mainCtrl.chkLocation('/shoplist')}" href ng-click="mainCtrl.setLocation('/shoplist')">
+                                    <span><i class="fa fa-lg fa-shopping-basket"></i></span>
+                                    <span class="hidden-xs">Shopping List</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a ng-class="{active:mainCtrl.chkLocation('/profile')}" href ng-click="mainCtrl.setLocation('/profile')">
+                                    <span><i class="fa fa-lg fa-user"></i></span>
+                                    <span class="hidden-xs">Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a ng-class="{active:mainCtrl.chkLocation('/settings')}" href ng-click="mainCtrl.setLocation('/settings')">
+                                    <span><i class="fa fa-lg fa-cog"></i></span>
+                                    <span class="hidden-xs">Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </header>
@@ -41,5 +74,6 @@
         <script src="./scripts/controllers/HomeController.js"></script>
         <script src="./scripts/controllers/RegistrationController.js"></script>
         <script src="./scripts/controllers/LoginController.js"></script>
+        <script src="./scripts/controllers/DashController.js"></script>
     </body>
 </html>

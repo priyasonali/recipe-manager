@@ -31,6 +31,29 @@ h1, h2, h3, p {
                 height: 60px;
             }
         }
+        nav {
+            ul {
+                padding: 0;
+                li {
+                    display: inline-block;
+                    padding: 20px 10px 0 10px;
+                    margin: 0;
+                    a {
+                        font-size: 1.2em;
+                        line-height: 0;
+                        color: @color1;
+                        text-decoration: none;
+                        &:hover {
+                            text-shadow: 0 0 15px @color3;
+                            text-decoration: none;
+                        }
+                    }
+                    a.active {
+                        color: lighten(@color3,10%);
+                    }
+                }
+            }
+        }
     }
     @media screen and (max-width: 768px) {
         text-align: center;
