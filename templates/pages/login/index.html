@@ -20,14 +20,30 @@
                     <div ng-show="loginCtrl.errorChk('uPass','pattern')">Password should contain at least an uppercase, a lowercase, a digit and a special character [!=@#$%^&-]</div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg">Login to Account</button>
+            <button type="submit" class="btn btn-primary btn-lg">Login to Account</button><br><br>
+            <a class="ng-link" ng-click="loginCtrl.forgotPass()">Forgot Password?</a><br><br>
+        </form>
+        <form ng-show="loginCtrl.forgotten" name="forgotForm" novalidate ng-submit="forgotForm.$valid && loginCtrl.fetchPass()">
+            <div class="input-group">
+                <input type="email" class="form-control input-lg" placeholder="Email" name="uEmail" 
+                ng-model="loginCtrl.fgtpass.user_email" ng-required="true">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-lg btn-primary" title="Reset Password" ng-disabled="forgotForm.uEmail.$invalid">
+                        <i class="fa fa-send"></i>
+                    </button>
+                </span>
+            </div>
+            <div class="alert alert-warning"  ng-show="loginCtrl.emailChk('uEmail')">
+                <div ng-show="loginCtrl.emailChk('uEmail','required')">Email address is required.</div>
+                <div ng-show="loginCtrl.emailChk('uEmail','email')">Please enter a valid email address.</div>
+            </div>
         </form>
         <hr>
         <div class="alert alert-danger"  ng-show="loginCtrl.response.status == 'failure'">
             Error {{loginCtrl.response.error.err_code}}: {{loginCtrl.response.error.err_desc}}
         </div>
         <div class="alert alert-success"  ng-show="loginCtrl.response.status == 'success'">
-            Authentication Successful! Redirecting to Dashboard...
+            {{loginCtrl.successMsg}}
         </div>
     </div>
 </div>
