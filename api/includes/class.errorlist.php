@@ -13,6 +13,8 @@
           $this->errlist[7] = "Email not activated.";
           $this->errlist[8] = "Email already activated.";
           $this->errlist[9] = "Invalid url.";
+          $this->errlist[10] = "Ingredient already exists.";
+          $this->errlist[11] = "There is no ingredients.";
       }
 }
 ?>
