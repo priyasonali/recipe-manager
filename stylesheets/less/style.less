@@ -18,6 +18,19 @@ h1, h2, h3, p {
     color: @color1;
 }
 
+a {
+    color: @color1;
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+        color: @color3;
+    }
+}
+
+a.ng-link[ng-click]{
+    cursor: pointer;
+}
+
 .topHead {
     .row {
         padding: 5px 10px;
@@ -41,16 +54,24 @@ h1, h2, h3, p {
                     a {
                         font-size: 1.2em;
                         line-height: 0;
-                        color: @color1;
-                        text-decoration: none;
                         &:hover {
                             text-shadow: 0 0 15px @color3;
-                            text-decoration: none;
+                            color: @color1;
                         }
                     }
                     a.active {
                         color: lighten(@color3,10%);
                     }
+                }
+            }
+        }
+        @media screen and (max-width: 768px) {
+            padding: 10px 0;
+            h1 {
+                #font2;
+                font-size: 1.5em;
+                img {
+                    height: 30px;
                 }
             }
         }
